@@ -55,3 +55,8 @@ h6 {
   line-height: 1.7;
 }
 /* /Launch page styles */
+
+#search-div {
+  width: 50%;
+  margin: auto;
+}
