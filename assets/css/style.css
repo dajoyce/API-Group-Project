@@ -60,3 +60,15 @@ h6 {
   width: 50%;
   margin: auto;
 }
+
+/* To Test Sandhya PR */
+.footer {
+    border-top-color: aqua;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(147, 162, 168);
+    color: white;
+    text-align:center;
+}
