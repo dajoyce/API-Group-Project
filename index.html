@@ -51,7 +51,7 @@
                   class="text-uppercase pt-md-5 pt-sm-2 pt-5 pb-md-5 pb-sm-3 pb-5 white-text font-weight-bold wow fadeInDown"
                   data-wow-delay="0.3s"
                 >
-                  Web developer & graphic designer
+                  Filler Subtitle Will Go Here
                 </h5>
                 <div
                   class="wow fadeInDown md-form"
@@ -61,12 +61,16 @@
                   <input type="text" id="search-input" class="form-control" />
                   <label for="search">Search</label>
                 </div>
-                <div
-                  class="wow fadeInDown mt-5"
-                  data-wow-delay=".03s"
-                  id="search-btn"
-                >
-                  <a class="btn btn-indigo btn-lg">Search</a>
+                <div class="wow fadeInDown mt-5" data-wow-delay=".03s">
+                  <button
+                    class="btn btn-indigo btn-lg"
+                    type="submit"
+                    id="search-btn"
+                    data-toggle="modal"
+                    data-target="#showsModal"
+                  >
+                    Search
+                  </button>
                 </div>
               </div>
               <!-- Grid column -->
@@ -80,6 +84,51 @@
       <!-- Full Page Intro -->
     </header>
     <!-- Main navigation -->
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="showsModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="showsModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header indigo">
+            <h5 class="modal-title text-white" id="showsModalTitle">
+              Choose a show
+            </h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div
+            class="modal-body d-inline-flex justify-content-center text-center"
+            id="shows-modal-body"
+          >
+            <h2 id="modal-band-title"></h2>
+          </div>
+          <div id="modal-band-img"></div>
+          <div id="modal-band-shows"></div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
   <script
     type="text/javascript"
