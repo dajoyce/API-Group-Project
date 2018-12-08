@@ -76,3 +76,35 @@ h6 {
 #search-input {
   color: white !important;
 }
+
+/*Modal Style*/
+.modal-content {
+  background-color: rgba(0, 0, 0, 0);
+}
+#modal-band-shows {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: whitesmoke;
+  font-weight: bold;
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+  color: red;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background: rgb(102, 42, 42);
+  background-image: linear-gradient(
+    to right,
+    rgb(60, 60, 60),
+    rgb(218, 173, 173),
+    rgb(60, 60, 60)
+  );
+}
+#modal-band-title {
+  color: red;
+  font-weight: bold;
+}
