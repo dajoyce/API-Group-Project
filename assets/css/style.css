@@ -19,12 +19,16 @@ header,
   body,
   header,
   .view {
-    height: 650px;
+    height: 600px;
   }
 }
 
+.btn .fa {
+  margin-left: 3px;
+}
+
 .top-nav-collapse {
-  background-color: #3f51b5 !important;
+  background-color: #424f95 !important;
 }
 
 .navbar:not(.top-nav-collapse) {
@@ -33,38 +37,45 @@ header,
 
 @media (max-width: 991px) {
   .navbar:not(.top-nav-collapse) {
-    background: #3f51b5 !important;
+    background: #424f95 !important;
   }
 }
 
-.rgba-gradient {
-  background: -webkit-linear-gradient(
-    45deg,
-    rgba(0, 0, 0, 0.7),
-    rgba(72, 15, 144, 0.4) 100%
-  );
-  background: -webkit-gradient(
-    linear,
-    45deg,
-    from(rgba(0, 0, 0, 0.7), rgba(72, 15, 144, 0.4) 100%)
-  );
-  background: linear-gradient(
-    to 45deg,
-    rgba(0, 0, 0, 0.7),
-    rgba(72, 15, 144, 0.4) 100%
-  );
-}
-
-.card {
-  background-color: rgba(126, 123, 215, 0.2);
-}
-
-.md-form label {
-  color: #ffffff;
+.btn-white {
+  color: black !important;
 }
 
 h6 {
   line-height: 1.7;
+}
+
+.rgba-gradient {
+  background: -moz-linear-gradient(
+    45deg,
+    rgba(42, 27, 161, 0.7),
+    rgba(29, 210, 177, 0.7) 100%
+  );
+  background: -webkit-linear-gradient(
+    45deg,
+    rgba(42, 27, 161, 0.7),
+    rgba(29, 210, 177, 0.7) 100%
+  );
+  background: -webkit-gradient(
+    linear,
+    45deg,
+    from(rgba(42, 27, 161, 0.7)),
+    to(rgba(29, 210, 177, 0.7))
+  );
+  background: -o-linear-gradient(
+    45deg,
+    rgba(42, 27, 161, 0.7),
+    rgba(29, 210, 177, 0.7) 100%
+  );
+  background: linear-gradient(
+    to 45deg,
+    rgba(42, 27, 161, 0.7),
+    rgba(29, 210, 177, 0.7) 100%
+  );
 }
 /* /Launch page styles */
 
@@ -75,4 +86,19 @@ h6 {
 
 #search-input {
   color: white !important;
+}
+
+/* Map Styles */
+.map-container-7 {
+  overflow: hidden;
+  padding-bottom: 56.25%;
+  position: relative;
+  height: 0;
+}
+.map-container-7 iframe {
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
 }
