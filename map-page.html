@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link href="assets/css/mdb.css" rel="stylesheet" />
+    <link href="assets/css/style.css" rel="stylesheet" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="assets/images/favicon.png"
+      sizes="16x16 32x32"
+    />
+    <title>Project 1</title>
+  </head>
+  <body>
+    <!-- Main navigation -->
+    <header>
+      <!-- Navbar -->
+      <nav
+        class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar"
+      >
+        <a class="navbar-brand" href="#"> <strong>Concert Advisor</strong> </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent-7"
+          aria-controls="navbarSupportedContent-7"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent-7">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <form class="form-inline">
+                <div class="md-form my-0">
+                  <input
+                    id="search-input"
+                    class="form-control"
+                    type="text"
+                    placeholder="Search"
+                    aria-label="Search"
+                  />
+                </div>
+              </form>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <!-- Full Page Intro -->
+      <div
+        class="view jarallax"
+        data-jarallax="{&quot;speed&quot;: 0.2}"
+        style="background-image: url('http://mdbootstrap.com/img/Photos/Others/images/91.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;"
+      >
+        <!-- Mask & flexbox options -->
+        <div
+          class="mask rgba-gradient d-flex justify-content-center align-items-center"
+        >
+          <!-- Content -->
+          <!-- Section: Contact v.2 -->
+          <section class="section">
+            <div class="card">
+              <div class="card-body">
+                <!-- Google map -->
+                <div
+                  id="map-container-google-12"
+                  class="z-depth-1-half map-container-7"
+                  style="height: 200px"
+                >
+                  <iframe
+                    src="https://maps.google.com/maps?q=Miami&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                    frameborder="0"
+                    style="border:0"
+                    allowfullscreen
+                  ></iframe>
+                </div>
+
+                <div class="row">
+                  <!-- Grid column -->
+                  <div class="col-md-6 mb-4">
+                    <form>
+                      <div class="md-form">
+                        <input
+                          type="text"
+                          id="contact-name"
+                          class="form-control"
+                        />
+                        <label for="contact-name" class="">Your name</label>
+                      </div>
+
+                      <div class="md-form">
+                        <input
+                          type="text"
+                          id="contact-email"
+                          class="form-control"
+                        />
+                        <label for="contact-email" class="">Your email</label>
+                      </div>
+
+                      <div class="md-form">
+                        <input
+                          type="text"
+                          id="contact-Subject"
+                          class="form-control"
+                        />
+                        <label for="contact-Subject" class="">Subject</label>
+                      </div>
+                    </form>
+                  </div>
+                  <!-- Grid column -->
+
+                  <!-- Grid column -->
+                  <div class="col-md-6 mb-4">
+                    <div class="md-form primary-textarea">
+                      <textarea
+                        type="text"
+                        id="contact-message"
+                        class="md-textarea form-control mb-0"
+                        rows="5"
+                        style="padding-bottom: 1.2rem;"
+                      ></textarea>
+                      <label for="contact-message">Your message</label>
+                    </div>
+                  </div>
+                  <!-- Grid column -->
+
+                  <!-- Grid column -->
+                  <div class="col-md-12">
+                    <div class="text-center">
+                      <a class="btn btn-mdb-color btn-block">Send Message</a>
+                    </div>
+                  </div>
+                  <!-- Grid column -->
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- Section: Contact v.2 -->
+          <!-- Content -->
+        </div>
+        <!-- Mask & flexbox options -->
+      </div>
+      <!-- Full Page Intro -->
+    </header>
+    <!-- Main navigation -->
+  </body>
+  <script
+    type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+  ></script>
+  <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+  <script
+    type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"
+  ></script>
+  <script
+    type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"
+  ></script>
+  <script
+    async
+    defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjfSdnx8Dh6cqIIXp8wVo3tc9vwLlHTqY&callback=initMap"
+  ></script>
+  <script type="text/javascript" src="assets/javascript/mdb.js"></script>
+  <script type="text/javascript" src="assets/javascript/prjt.js"></script>
+</html>

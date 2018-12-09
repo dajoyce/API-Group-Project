@@ -34,12 +34,22 @@ $(document).ready(function() {
         $("#modal-band-shows").empty();
         //Looping through upcoming shows
         for (var i = 0; i <= 5; i++) {
-          var venu = $("<p>")
+
+          var venu = $("<a>")
+
+         
+
             .text(response.resultsPage.results.event[i].venue.displayName)
             .attr({
               id: "venu",
               "data-lat": response.resultsPage.results.event[i].venue.lat,
-              "data-long": response.resultsPage.results.event[i].venue.lng
+
+              "data-long": response.resultsPage.results.event[i].venue.lng,
+              href: "map-page.html",
+              target: "_blank"
+
+
+
             });
           console.log(venu);
           var city = $("<p>")
