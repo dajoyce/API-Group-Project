@@ -88,6 +88,7 @@ h6 {
   color: white !important;
 }
 
+ adding-map-page
 /* Map Styles */
 .map-container-7 {
   overflow: hidden;
@@ -101,4 +102,36 @@ h6 {
   height: 100%;
   width: 100%;
   position: absolute;
+
+/*Modal Style*/
+.modal-content {
+  background-color: rgba(0, 0, 0, 0);
+}
+#modal-band-shows {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: whitesmoke;
+  font-weight: bold;
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+  color: red;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background: rgb(102, 42, 42);
+  background-image: linear-gradient(
+    to right,
+    rgb(60, 60, 60),
+    rgb(218, 173, 173),
+    rgb(60, 60, 60)
+  );
+}
+#modal-band-title {
+  color: red;
+  font-weight: bold;
+
 }
