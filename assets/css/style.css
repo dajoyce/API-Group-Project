@@ -88,7 +88,7 @@ h6 {
   color: white !important;
 }
 
- adding-map-page
+adding-map-page
 /* Map Styles */
 .map-container-7 {
   overflow: hidden;
@@ -102,6 +102,7 @@ h6 {
   height: 100%;
   width: 100%;
   position: absolute;
+}
 
 /*Modal Style*/
 .modal-content {
@@ -133,5 +134,9 @@ hr {
 #modal-band-title {
   color: red;
   font-weight: bold;
+}
 
+.link-out {
+  display: block;
+  margin-top: 1rem;
 }
