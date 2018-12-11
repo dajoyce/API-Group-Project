@@ -34,22 +34,14 @@ $(document).ready(function() {
         $("#modal-band-shows").empty();
         //Looping through upcoming shows
         for (var i = 0; i <= 5; i++) {
-
           var venu = $("<a>")
-
-         
-
             .text(response.resultsPage.results.event[i].venue.displayName)
             .attr({
               id: "venu",
               "data-lat": response.resultsPage.results.event[i].venue.lat,
 
               "data-long": response.resultsPage.results.event[i].venue.lng,
-              href: "map-page.html",
-              target: "_blank"
-
-
-
+              href: "map-page.html"
             });
           console.log(venu);
           var city = $("<p>")
@@ -59,7 +51,8 @@ $(document).ready(function() {
           var linkOut = $("<a>")
             .text("Songkick Event Page")
             .attr("href", response.resultsPage.results.event[i].uri)
-            .attr("target", "_blank");
+            .attr("target", "_blank")
+            .attr("class", "link-out");
           console.log(linkOut);
           var date = $("<p>")
             .text(response.resultsPage.results.event[i].start.date)
@@ -68,26 +61,39 @@ $(document).ready(function() {
           var line = $("<hr>");
           //Appending information to modal
           $("#modal-band-shows").append(date, city, venu, linkOut, line);
-          //Sending lat and lng to google map
-          $("#modal-band-shows").on("click", "#venu", function() {
-            var location = $(this);
-            (function initMap() {
-              var myLatLng = {
-                lat: location.attr("data-lat"),
-                lng: location.attr("data-long")
-              };
-              console.log("This worked", myLatLng);
-              var map = new google.maps.Map(document.getElementById("map"), {
-                zoom: 8,
-                center: myLatLng,
-                mapTypeId: "terrain"
-              });
-              var marker = new google.maps.Marker({
-                position: myLatLng,
-                map: map,
-                title: "Hello World!"
-              });
-            })();
+        }
+        //Sending lat and lng to google map
+        $("#modal-band-shows").on("click", "#venu", function() {
+          var location = $(this);
+          var myLatLng = {
+            lat: parseFloat(location.attr("data-lat")),
+            lng: parseFloat(location.attr("data-long"))
+          };
+          console.log("This worked", myLatLng);
+          initMap(myLatLng);
+          //   var map = new google.maps.Map(document.getElementById("map"), {
+          //     zoom: 8,
+          //     center: myLatLng,
+          //     mapTypeId: "terrain"
+          //   });
+          //   var marker = new google.maps.Marker({
+          //     position: myLatLng,
+          //     map: map,
+          //     title: "Hello World!"
+          //   });
+          // })();
+        });
+
+        function initMap(mapObj) {
+          var map = new google.maps.Map(document.getElementById("map"), {
+            zoom: 8,
+            center: mapObj,
+            mapTypeId: "terrain"
+          });
+          var marker = new google.maps.Marker({
+            position: mapObj,
+            map: map,
+            title: "Hello World!"
           });
         }
         //Appending band name to modal title. Outside of Loop
