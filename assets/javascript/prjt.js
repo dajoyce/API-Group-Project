@@ -12,6 +12,19 @@ $(document).ready(function() {
       $("#date").val()
        .trim() 
     ); */
+
+    //API to get photo of band/artist
+    var queryURL =
+      "https://rest.bandsintown.com/artists/" +
+      userSearch +
+      "?app_id=b7b374713cf3e2cf710b82eac648971e";
+    $.ajax({ url: queryURL, method: "GET" }).then(function(response) {
+      console.log(response);
+      var artistImage = $("<img>");
+      artistImage.attr("src", response.image_url);
+      $("#modal-band-img").html(artistImage);
+      console.log(artistImage);
+    });
     //Songkicker, Capturing Band Name
     var queryURL =
       "https://api.songkick.com/api/3.0/search/artists.json?apikey=5KXgncncFq2otJd6&query=" +
@@ -65,12 +78,8 @@ $(document).ready(function() {
         //Sending lat and lng to google map
         $("#modal-band-shows").on("click", "#venu", function() {
           var location = $(this);
-          var myLatLng = {
-            lat: parseFloat(location.attr("data-lat")),
-            lng: parseFloat(location.attr("data-long"))
-          };
-          console.log("This worked", myLatLng);
-          initMap(myLatLng);
+          localStorage.setItem("lat", location.attr("data-lat"));
+          localStorage.setItem("long", location.attr("data-long"));
           //   var map = new google.maps.Map(document.getElementById("map"), {
           //     zoom: 8,
           //     center: myLatLng,
@@ -84,18 +93,6 @@ $(document).ready(function() {
           // })();
         });
 
-        function initMap(mapObj) {
-          var map = new google.maps.Map(document.getElementById("map"), {
-            zoom: 8,
-            center: mapObj,
-            mapTypeId: "terrain"
-          });
-          var marker = new google.maps.Marker({
-            position: mapObj,
-            map: map,
-            title: "Hello World!"
-          });
-        }
         //Appending band name to modal title. Outside of Loop
         $("#modal-band-title").text(userSearch);
       });

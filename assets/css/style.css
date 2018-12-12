@@ -140,3 +140,16 @@ hr {
   display: block;
   margin-top: 1rem;
 }
+
+.gm-control-active img {
+  position: absolute;
+}
+
+/* img {
+  margin: 0 auto;
+  max-width: 350px;
+  height: auto;
+  display: block;
+  box-shadow: 1px 1px 1px black;
+  padding-bottom: 20px;
+} */
