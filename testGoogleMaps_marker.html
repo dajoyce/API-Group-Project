@@ -23,6 +23,8 @@
 </head>
 
 <body>
+    <input type="text" name="zipcode" id="userZipcode" value="12345"></input>
+    <button onclick="searchByZipcode()">Search by zipcode</button>
     <div id="map"></div>
     <script>
 
@@ -43,9 +45,23 @@
                 title: 'Hello World!'
             });
         }
+        function searchByZipcode() {
+            var userZipcode = $("#userZipcode").val().trim();
+            console.log("userZipcode = ", userZipcode);
+            google.maps.places.PlacesService
+
+        }
+
     </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjfSdnx8Dh6cqIIXp8wVo3tc9vwLlHTqY&callback=initMap">
     </script>
 </body>
 
 </html>
+
+<!-- https://stackoverflow.com/questions/36235936/google-map-api-to-find-nearby-restaurant-around-my-place 
+https://developers.google.com/maps/documentation/javascript/places
+https://developers.google.com/places/supported_types
+-->

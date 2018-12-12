@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Simple Markers</title>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjfSdnx8Dh6cqIIXp8wVo3tc9vwLlHTqY&libraries=places&callback=initMap">
+    </script>
+
+    <style>
+        /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+        #map {
+            height: 100%;
+        }
+
+        /* Optional: Makes the sample page fill the window. */
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        #map {
+            display: none;
+        }
+    </style>
+
+    <script>
+        var map;
+        var infowindow;
+
+
+        function searchByZipcode() {
+            var userZipcode = $("#userZipcode").val().trim();
+            var loca = getLocationForZip(userZipcode);
+            console.log("userZipcode = ", userZipcode + " loca=", loca);
+            $("#map").show();
+            drawMap(loca);
+        }
+        function initMap() {
+            var myLatLng = { lat: 35.789286, lng: -78.6396407 };
+            //{ lat: 35.8019588, lng: -78.8948741 };
+            // { lat: 35.789286, lng: -78.6396407 };
+            drawMap(myLatLng);
+        }
+
+        function drawMap(loc) {
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: loc,
+                zoom: 14
+            });
+
+            infowindow = new google.maps.InfoWindow();
+            var service = new google.maps.places.PlacesService(map);
+            service.nearbySearch({
+                location: loc,
+                radius: 5000,
+                type: ['restaurant']
+            }, callback);
+        }
+        function callback(results, status) {
+            if (status === google.maps.places.PlacesServiceStatus.OK) {
+                for (var i = 0; i < results.length; i++) {
+                    createMarker(results[i]);
+                }
+            }
+        }
+
+        function createMarker(place) {
+            var placeLoc = place.geometry.location;
+            var marker = new google.maps.Marker({
+                map: map,
+                position: place.geometry.location
+            });
+
+            google.maps.event.addListener(marker, 'click', function () {
+                infowindow.setContent(place.name);
+                infowindow.open(map, this);
+            });
+        }
+
+
+
+        function getLocationForZip(zipcode) {
+            var newloc = {};
+
+            $.ajax({
+                url: "https://maps.googleapis.com/maps/api/geocode/json",
+                type: "GET",
+                data: {
+                    key: "AIzaSyDjfSdnx8Dh6cqIIXp8wVo3tc9vwLlHTqY",
+                    components: "postal_code:" + zipcode,
+                    sensor: false
+                },
+                success: function (data) {
+                    var adObject = data.results[0];
+                    console.dir(adObject);
+                    var loc = adObject.geometry.location;
+                    console.dir(loc);
+                    newloc = loc;
+                },
+                async: false
+            });
+
+            return newloc;
+        }//end-function
+    </script>
+</head>
+
+<body>
+    <input type="text" name="zipcode" id="userZipcode" value="27519"></input>
+    <button onclick="searchByZipcode()">Search by zipcode</button>
+    <div id="map"></div>
+
+</body>
+
+</html>
+
+<!-- https://stackoverflow.com/questions/36235936/google-map-api-to-find-nearby-restaurant-around-my-place 
+https://developers.google.com/maps/documentation/javascript/places
+https://developers.google.com/maps/documentation/javascript/reference/#PlacesService
+https://developers.google.com/places/supported_types
+-->
