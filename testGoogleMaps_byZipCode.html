@@ -5,30 +5,31 @@
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <title>Simple Markers</title>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjfSdnx8Dh6cqIIXp8wVo3tc9vwLlHTqY&libraries=places&callback=initMap">
-    </script>
-
     <style>
         /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-        #map {
-            height: 100%;
-        }
+           * element that contains the map. */
+            #map {
+                height: 100%;
+            }
+    
+            /* Optional: Makes the sample page fill the window. */
+            html,
+            body {
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            #map {
+                display: none;
+            }
+        </style>
 
-        /* Optional: Makes the sample page fill the window. */
-        html,
-        body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-        }
-        #map {
-            display: none;
-        }
-    </style>
+</head>
 
+<body>
+    <input type="text" name="zipcode" id="userZipcode" value="27519"></input>
+    <button onclick="searchByZipcode()">Search by zipcode</button>
+    <div id="map"></div>
     <script>
         var map;
         var infowindow;
@@ -36,10 +37,10 @@
 
         function searchByZipcode() {
             var userZipcode = $("#userZipcode").val().trim();
-            var loca = getLocationForZip(userZipcode);
-            console.log("userZipcode = ", userZipcode + " loca=", loca);
+            var location = getLocationForZip(userZipcode);
+            console.log("userZipcode = ", userZipcode + " loca=", location);
             $("#map").show();
-            drawMap(loca);
+            drawMap(location);
         }
         function initMap() {
             var myLatLng = { lat: 35.789286, lng: -78.6396407 };
@@ -58,7 +59,7 @@
             var service = new google.maps.places.PlacesService(map);
             service.nearbySearch({
                 location: loc,
-                radius: 5000,
+                radius: 5000,/* in meters */
                 type: ['restaurant']
             }, callback);
         }
@@ -109,12 +110,10 @@
             return newloc;
         }//end-function
     </script>
-</head>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-<body>
-    <input type="text" name="zipcode" id="userZipcode" value="27519"></input>
-    <button onclick="searchByZipcode()">Search by zipcode</button>
-    <div id="map"></div>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjfSdnx8Dh6cqIIXp8wVo3tc9vwLlHTqY&libraries=places&callback=initMap">
+    </script>
 
 </body>
 
