@@ -9,7 +9,7 @@ initMap(myLatLng);
 
 function initMap(mapObj) {
   var map = new google.maps.Map(document.getElementById("map"), {
-    zoom: 8,
+    zoom: 15,
     center: mapObj,
     mapTypeId: "terrain"
   });
