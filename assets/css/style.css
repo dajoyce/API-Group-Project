@@ -126,7 +126,12 @@ adding-map-page
 
 a {
   text-decoration: none;
-  color: #424f95;
+  color: darkgoldenrod;
+  width: fit-content;
+}
+
+a:hover {
+  color: aliceblue;
 }
 
 hr {

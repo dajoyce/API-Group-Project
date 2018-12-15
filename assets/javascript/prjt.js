@@ -8,7 +8,6 @@ $(document).ready(function() {
     var userSearch = $("#search-input")
       .val()
       .trim();
-    console.log(userSearch);
 
     //API to get photo of band/artist
     var queryURL =
@@ -16,14 +15,12 @@ $(document).ready(function() {
       userSearch +
       "?app_id=b7b374713cf3e2cf710b82eac648971e";
     $.ajax({ url: queryURL, method: "GET" }).then(function(response) {
-      console.log(response);
       var artistImage = $("<img>");
       artistImage.attr({
         src: response.image_url,
         class: "z-depth-5 mb-3 img-fluid rounded"
       });
       $("#modal-band-img").html(artistImage);
-      console.log(artistImage);
     });
     //Songkicker, Capturing Band Name
     var queryURL =
@@ -37,14 +34,14 @@ $(document).ready(function() {
         $("#modal-band-shows").empty();
         $("#modal-band-title").text("No artists found");
       }
-      console.log(response);
+
       var bandName = response.resultsPage.results.artist[0].displayName;
       $("#modal-band-title").text(bandName);
       localStorage.setItem("bandName", bandName);
-      console.log(response);
+
       showLink =
         response.resultsPage.results.artist[0].identifier[0].eventsHref;
-      console.log(showLink);
+
       var eventsQuery = showLink + "?apikey=5KXgncncFq2otJd6";
       //Songkicker, Getting Upcoming Shows
       $.ajax({
@@ -57,7 +54,6 @@ $(document).ready(function() {
           );
           $("#modal-band-shows").html(sorry);
         } else {
-          console.log(eventsQuery);
           $("#modal-band-shows").empty();
         }
         //Looping through upcoming shows
@@ -73,21 +69,21 @@ $(document).ready(function() {
                 response.resultsPage.results.event[i].venue.displayName,
               href: "map-page.html"
             });
-          console.log(venu);
+
           var city = $("<p>")
             .text(response.resultsPage.results.event[i].location.city)
             .attr("id", "city");
-          console.log(city);
+
           var linkOut = $("<a>")
             .text("Songkick Event Page")
             .attr("href", response.resultsPage.results.event[i].uri)
             .attr("target", "_blank")
-            .attr("class", "link-out");
-          console.log(linkOut);
+            .attr("class", "link-out mx-auto");
+
           var date = $("<p>")
             .text(response.resultsPage.results.event[i].start.date)
             .attr("id", "date");
-          console.log(date);
+
           var line = $("<hr>");
           //Appending information to modal
           $("#modal-band-shows").append(date, city, venu, linkOut, line);
@@ -99,9 +95,6 @@ $(document).ready(function() {
           localStorage.setItem("lat", location.attr("data-lat"));
           localStorage.setItem("long", location.attr("data-long"));
         });
-
-        //Appending band name to modal title. Outside of Loop
-        console.log(response.resultsPage.results.artist[0].displayName);
       });
     });
   });
