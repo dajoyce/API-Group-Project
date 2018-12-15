@@ -84,8 +84,16 @@ h6 {
   margin: auto;
 }
 
-#search-input {
+#search-label {
   color: white !important;
+}
+
+#search-input {
+  color: white;
+}
+
+.search-btn {
+  background-color: transparent !important;
 }
 
 adding-map-page
@@ -105,11 +113,12 @@ adding-map-page
 }
 
 /*Modal Style*/
-.modal-content {
+/* .modal-content {
   background-color: rgba(0, 0, 0, 0);
-}
-#modal-band-shows {
-  background-color: rgba(0, 0, 0, 0.8);
+} */
+
+#modal-content {
+  background-color: rgb(60, 60, 60) !important;
   color: whitesmoke;
   font-weight: bold;
   text-align: center;
@@ -117,7 +126,7 @@ adding-map-page
 
 a {
   text-decoration: none;
-  color: red;
+  color: #424f95;
 }
 
 hr {
@@ -131,8 +140,20 @@ hr {
     rgb(60, 60, 60)
   );
 }
+
+#hr-on-white {
+  border: 0;
+  height: 1px;
+  background: rgb(102, 42, 42);
+  background-image: linear-gradient(
+    to right,
+    rgb(218, 173, 173),
+    rgb(60, 60, 60),
+    rgb(218, 173, 173)
+  );
+}
 #modal-band-title {
-  color: red;
+  color: whitesmoke;
   font-weight: bold;
 }
 
@@ -145,11 +166,6 @@ hr {
   position: absolute;
 }
 
-/* img {
-  margin: 0 auto;
-  max-width: 350px;
-  height: auto;
-  display: block;
-  box-shadow: 1px 1px 1px black;
-  padding-bottom: 20px;
-} */
+#map-card {
+  min-width: 50%;
+}

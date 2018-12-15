@@ -47,7 +47,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent-7">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <div class="form-inline">
+              <form class="form-inline">
                 <div class="md-form my-0">
                   <input
                     id="search-input"
@@ -58,15 +58,15 @@
                   />
                 </div>
                 <button
-                  class="btn btn-indigo btn-lg"
+                  class="btn btn-rounded btn-sm btn-indigo"
                   type="submit"
                   id="search-btn"
                   data-toggle="modal"
                   data-target="#showsModal"
                 >
-                  Search
+                  <i class="fa fa-search" aria-hidden="true"></i>
                 </button>
-              </div>
+              </form>
             </li>
           </ul>
         </div>
@@ -75,17 +75,19 @@
       <div
         class="view jarallax"
         data-jarallax="{&quot;speed&quot;: 0.2}"
-        style="background-image: url('http://mdbootstrap.com/img/Photos/Others/images/91.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;"
+        style="background-image: url(assets/images/background.jpg); background-repeat: no-repeat; background-size: cover; background-position: center center;"
       >
         <!-- Mask & flexbox options -->
         <div
-          class="mask rgba-gradient d-flex justify-content-center align-items-center"
+          class="mask rgba-indigo-strong d-flex justify-content-center align-items-center"
         >
           <!-- Content -->
           <!-- Section: Contact v.2 -->
-          <section class="section w-50">
+          <section class="section" id="map-card">
             <div class="card wow fadeInUp" data-wow-delay="0.2s">
               <div class="card-body">
+                <h4 class="card-title" id="band-card-title"></h4>
+                <hr id="hr-on-white" />
                 <!-- Google map -->
 
                 <div
@@ -93,7 +95,8 @@
                   class="z-depth-1-half map-container-7"
                   style="height: 400px"
                 ></div>
-                <div class="pt-4">
+                <hr id="hr-on-white" />
+                <div class="pt-1">
                   <!-- Checkbox 1 1 -->
                   <div
                     class="custom-control custom-checkbox custom-control-inline"
@@ -156,10 +159,10 @@
       aria-hidden="true"
     >
       <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-        <div class="modal-content">
+        <div class="modal-content" id="modal-content">
           <div class="modal-header indigo">
             <h5 class="modal-title text-white" id="showsModalTitle">
-              Choose a show
+              Click on a venue to view show details
             </h5>
             <button
               type="button"
@@ -167,7 +170,7 @@
               data-dismiss="modal"
               aria-label="Close"
             >
-              <span aria-hidden="true">&times;</span>
+              <span aria-hidden="true" class="white-text">&times;</span>
             </button>
           </div>
           <div
@@ -178,8 +181,7 @@
           </div>
           <div id="modal-band-img"></div>
           <div class="text-center" id="modal-band-shows"></div>
-          <div id="map"></div>
-          <div class="modal-footer">
+          <div class="modal-footer border-0" id="modal-footer">
             <button
               type="button"
               class="btn btn-secondary"
