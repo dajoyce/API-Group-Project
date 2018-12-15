@@ -2,16 +2,13 @@ $(document).ready(function() {
   // Initialize animations
   new WOW().init();
   var showLink;
-  $("#search-btn").on("click", function() {
+  $("#search-btn").on("click", function(e) {
+    e.preventDefault();
     //Set User Input
     var userSearch = $("#search-input")
       .val()
       .trim();
     console.log(userSearch);
-    /* var date = moment(
-      $("#date").val()
-       .trim() 
-    ); */
 
     //API to get photo of band/artist
     var queryURL =
@@ -21,7 +18,10 @@ $(document).ready(function() {
     $.ajax({ url: queryURL, method: "GET" }).then(function(response) {
       console.log(response);
       var artistImage = $("<img>");
-      artistImage.attr("src", response.image_url);
+      artistImage.attr({
+        src: response.image_url,
+        class: "z-depth-5 mb-3 img-fluid rounded"
+      });
       $("#modal-band-img").html(artistImage);
       console.log(artistImage);
     });
@@ -33,6 +33,14 @@ $(document).ready(function() {
       url: queryURL,
       method: "GET"
     }).then(function(response) {
+      if (response.resultsPage.totalEntries == 0) {
+        $("#modal-band-shows").empty();
+        $("#modal-band-title").text("No artists found");
+      }
+      console.log(response);
+      var bandName = response.resultsPage.results.artist[0].displayName;
+      $("#modal-band-title").text(bandName);
+      localStorage.setItem("bandName", bandName);
       console.log(response);
       showLink =
         response.resultsPage.results.artist[0].identifier[0].eventsHref;
@@ -43,8 +51,15 @@ $(document).ready(function() {
         url: eventsQuery,
         method: "GET"
       }).then(function(response) {
-        console.log(response);
-        $("#modal-band-shows").empty();
+        if (response.resultsPage.totalEntries == 0) {
+          var sorry = $("<p>").text(
+            localStorage.getItem("bandName") + " has no upcoming shows"
+          );
+          $("#modal-band-shows").html(sorry);
+        } else {
+          console.log(eventsQuery);
+          $("#modal-band-shows").empty();
+        }
         //Looping through upcoming shows
         for (var i = 0; i <= 5; i++) {
           var venu = $("<a>")
@@ -54,6 +69,8 @@ $(document).ready(function() {
               "data-lat": response.resultsPage.results.event[i].venue.lat,
 
               "data-long": response.resultsPage.results.event[i].venue.lng,
+              "data-name":
+                response.resultsPage.results.event[i].venue.displayName,
               href: "map-page.html"
             });
           console.log(venu);
@@ -78,23 +95,13 @@ $(document).ready(function() {
         //Sending lat and lng to google map
         $("#modal-band-shows").on("click", "#venu", function() {
           var location = $(this);
+          localStorage.setItem("venue", location.attr("data-name"));
           localStorage.setItem("lat", location.attr("data-lat"));
           localStorage.setItem("long", location.attr("data-long"));
-          //   var map = new google.maps.Map(document.getElementById("map"), {
-          //     zoom: 8,
-          //     center: myLatLng,
-          //     mapTypeId: "terrain"
-          //   });
-          //   var marker = new google.maps.Marker({
-          //     position: myLatLng,
-          //     map: map,
-          //     title: "Hello World!"
-          //   });
-          // })();
         });
 
         //Appending band name to modal title. Outside of Loop
-        $("#modal-band-title").text(userSearch);
+        console.log(response.resultsPage.results.artist[0].displayName);
       });
     });
   });

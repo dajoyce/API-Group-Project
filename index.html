@@ -29,11 +29,11 @@
       <div
         class="view jarallax"
         data-jarallax="{&quot;speed&quot;: 0.2}"
-        style="background-image: url('http://mdbootstrap.com/img/Photos/Others/images/91.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;"
+        style="background-image: url(assets/images/background.jpg); background-repeat: no-repeat; background-size: cover; background-position: center center;"
       >
         <!-- Mask & flexbox options -->
         <div
-          class="mask rgba-gradient d-flex justify-content-center align-items-center"
+          class="mask rgba-indigo-strong d-flex justify-content-center align-items-center"
         >
           <!-- Content -->
           <div class="container">
@@ -53,25 +53,29 @@
                 >
                   Filler Subtitle Will Go Here
                 </h5>
-                <div
-                  class="wow fadeInDown md-form"
-                  data-wow-delay=".03s"
-                  id="search-div"
-                >
-                  <input type="text" id="search-input" class="form-control" />
-                  <label for="search">Search</label>
-                </div>
-                <div class="wow fadeInDown mt-5" data-wow-delay=".03s">
-                  <button
-                    class="btn btn-indigo btn-lg"
-                    type="submit"
-                    id="search-btn"
-                    data-toggle="modal"
-                    data-target="#showsModal"
+                <form>
+                  <div
+                    class="wow fadeInDown md-form"
+                    data-wow-delay=".03s"
+                    id="search-div"
                   >
-                    Search
-                  </button>
-                </div>
+                    <input type="text" id="search-input" class="form-control" />
+                    <label id="search-label" for="search-input"
+                      >Search by artist</label
+                    >
+                  </div>
+                  <div class="wow fadeInDown mt-5" data-wow-delay=".03s">
+                    <button
+                      class="btn btn-indigo btn-rounded btn-lg"
+                      type="submit"
+                      id="search-btn"
+                      data-toggle="modal"
+                      data-target="#showsModal"
+                    >
+                      Search
+                    </button>
+                  </div>
+                </form>
               </div>
               <!-- Grid column -->
             </div>
@@ -95,10 +99,10 @@
       aria-hidden="true"
     >
       <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-        <div class="modal-content">
+        <div class="modal-content" id="modal-content">
           <div class="modal-header indigo">
             <h5 class="modal-title text-white" id="showsModalTitle">
-              Choose a show
+              Click on a venue to view show details
             </h5>
             <button
               type="button"
@@ -106,7 +110,7 @@
               data-dismiss="modal"
               aria-label="Close"
             >
-              <span aria-hidden="true">&times;</span>
+              <span aria-hidden="true" class="white-text">&times;</span>
             </button>
           </div>
           <div
@@ -117,8 +121,7 @@
           </div>
           <div id="modal-band-img"></div>
           <div class="text-center" id="modal-band-shows"></div>
-          <div id="map"></div>
-          <div class="modal-footer">
+          <div class="modal-footer border-0" id="modal-footer">
             <button
               type="button"
               class="btn btn-secondary"
