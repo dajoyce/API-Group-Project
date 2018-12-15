@@ -30,6 +30,7 @@ $(document).ready(function() {
       url: queryURL,
       method: "GET"
     }).then(function(response) {
+      console.log(response);
       if (response.resultsPage.totalEntries == 0) {
         $("#modal-band-shows").empty();
         $("#modal-band-title").text("No artists found");
@@ -42,7 +43,11 @@ $(document).ready(function() {
       showLink =
         response.resultsPage.results.artist[0].identifier[0].eventsHref;
 
-      var eventsQuery = showLink + "?apikey=5KXgncncFq2otJd6";
+      var firstHalf = showLink.slice(0, 4);
+      var secondHalf = showLink.slice(4);
+      showLinkFixed = firstHalf + "s" + secondHalf;
+
+      var eventsQuery = showLinkFixed + "?apikey=5KXgncncFq2otJd6";
       //Songkicker, Getting Upcoming Shows
       $.ajax({
         url: eventsQuery,
